@@ -18,6 +18,10 @@ Then(/^I am redirected to the Checkout page$/) do
   current_path.should == "/Cart/Checkout"
 end
 
+Then(/^I am redirected to the homepage$/) do
+  current_url.should == "http://richard-sports-store.azurewebsites.net/"
+end
+
 When /^I add the Soccer Ball item$/ do
   #when i use string interpolation within the contains block, the code breaks
   #i have hardcoded a product for now
@@ -39,4 +43,12 @@ end
 
 Then(/^I am given a warning and not allowed to checkout$/) do
   assert_selector('.validation-summary-errors') && current_path.should == "/Cart/Checkout"
+end
+
+When(/^I click on page (\d+)$/) do |page_num|
+  click_link(page_num)
+end
+
+Then(/^I am redirected to page (\d+) of the catalog$/) do |page_num|
+  current_path.should == "/Page#{page_num}"
 end

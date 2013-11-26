@@ -15,6 +15,10 @@ Feature: Store
     When I click on the Watersports link
     Then I am on the Watersports products page
     
+  Scenario: I can navigate the catalog by page
+    When I click on page 2
+    Then I am redirected to page 2 of the catalog
+    
   Scenario: I can access my cart
     When I click on the Checkout link
     Then I am redirected to the Cart page
@@ -28,6 +32,11 @@ Feature: Store
     When I click on the Remove button in my cart
     Then my cart should be empty
   
+  Scenario: I can continue shopping from my cart
+    Given I add the Soccer Ball item
+    When I click on the Continue shopping link
+    Then I am redirected to the homepage
+    
   Scenario: I can checkout
     Given I add the Soccer Ball item
     When I click on the Checkout now link
